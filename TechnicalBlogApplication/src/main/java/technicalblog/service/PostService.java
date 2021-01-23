@@ -10,9 +10,9 @@ import technicalblog.model.Post;
 @Service
 public class PostService {
 
-    public ArrayList<Post> getAllPosts() {
-        ArrayList<Post> posts = new ArrayList<>();
+    private static ArrayList<Post> POSTS = new ArrayList<>();
 
+    static {
         Post post1 = new Post();
         post1.setTitle("Post 1");
         post1.setBody("Post Body 1");
@@ -28,11 +28,13 @@ public class PostService {
         post3.setBody("Post Body 3");
         post3.setDate(new Date());
 
-        posts.add(post1);
-        posts.add(post2);
-        posts.add(post3);
+        POSTS.add(post1);
+        POSTS.add(post2);
+        POSTS.add(post3);
+    }
 
-        return posts;
+    public ArrayList<Post> getAllPosts() {
+        return POSTS;
     }
 
     public ArrayList<Post> getOnePost() {
@@ -47,4 +49,8 @@ public class PostService {
         return posts;
 
     }
+
+	public void createPost(Post newPost) {
+        POSTS.add(newPost);
+	}
 }

@@ -51,6 +51,7 @@ public class UserController {
     public String registration() {
         return "users/registration";
     }
+    
     @RequestMapping(value = "users/registration", method=RequestMethod.POST)
     public String registerUser(User user) {
         return "users/login";

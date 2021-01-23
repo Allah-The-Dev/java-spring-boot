@@ -12,11 +12,11 @@
 
 <form method="post" th:object="${user}" th:action="@{/users/registration}">
     <label for="username">Username:</label>
-    <input type="text" th:field="*{username}" id="username" name="username" />
+    <input type="text" id="username" name="username" />
     <label for="password">Password:</label>
-    <input type="password" th:field="*{username}" id="password" name="password" />
+    <input type="password" id="password" name="password" />
     <label for="fullname">Full Name:</label>
-    <input type="text" th:field="*{fullname}" id="fullname" name="fullName" />
+    <input type="text" id="fullname" name="fullName" />
     <input type="submit" value="Register" />
 </form>
 
