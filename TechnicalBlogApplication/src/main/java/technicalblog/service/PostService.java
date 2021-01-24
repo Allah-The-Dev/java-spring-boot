@@ -50,7 +50,7 @@ public class PostService {
 
     }
 
-	public void createPost(Post newPost) {
-        POSTS.add(newPost);
+	public boolean createPost(Post newPost) {
+        return POSTS.add(newPost);
 	}
 }
