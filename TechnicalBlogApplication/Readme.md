@@ -1,0 +1,1 @@
+*to initialize database use file src\main\resources\db\posts.sql

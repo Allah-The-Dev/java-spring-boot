@@ -61,7 +61,7 @@ public class PostControllerTest {
 
         //mock postService createPost behaviour
         Mockito.when(postService.createPost(Mockito.any(Post.class))) 
-            .thenReturn(true);
+            .thenReturn(1L);
 
         //Send Post1 as body to /post/create 
         RequestBuilder requestBuilder = MockMvcRequestBuilders
