@@ -60,8 +60,7 @@ public class PostControllerTest {
         ObjectMapper mapper = new ObjectMapper();
 
         //mock postService createPost behaviour
-        Mockito.when(postService.createPost(Mockito.any(Post.class))) 
-            .thenReturn(1L);
+        Mockito.doNothing().when(postService).createPost(post1);;
 
         //Send Post1 as body to /post/create 
         RequestBuilder requestBuilder = MockMvcRequestBuilders
