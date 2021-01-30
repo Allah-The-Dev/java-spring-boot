@@ -9,7 +9,6 @@ import org.springframework.web.bind.annotation.RequestMethod;
 import technicalblog.model.Post;
 import technicalblog.service.PostService;
 
-import java.util.Date;
 import java.util.List;
 
 @Controller
@@ -32,7 +31,6 @@ public class PostController {
 
     @RequestMapping(value = "/posts/create", method = RequestMethod.POST)
     public String createPost(Post newPost) {
-        newPost.setDate(new Date());
         postService.createPost(newPost);
         return "redirect:/posts";
     }

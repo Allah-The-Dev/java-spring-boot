@@ -8,6 +8,7 @@ import java.util.Date;
 public class Post {
 
     @Id
+    @GeneratedValue (strategy = GenerationType.IDENTITY)
     @Column(name = "id")
     private Integer id;
 
@@ -42,6 +43,14 @@ public class Post {
 
     public void setDate(Date date) {
         this.date = date;
+    }
+
+    public Integer getId() {
+        return id;
+    }
+
+    public void setId(Integer id) {
+        this.id = id;
     }
 
 }

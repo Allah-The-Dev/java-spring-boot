@@ -5,6 +5,7 @@ import technicalblog.model.Post;
 
 import javax.persistence.EntityManager;
 import javax.persistence.EntityManagerFactory;
+import javax.persistence.EntityTransaction;
 import javax.persistence.PersistenceUnit;
 import javax.persistence.TypedQuery;
 import java.util.List;
@@ -26,6 +27,23 @@ public class PostRepository {
     public Post getLatestPost() {
         EntityManager em = emf.createEntityManager();
         return em.find(Post.class, 3);
+    }
+
+    public Post createPost(Post newPost) {
+
+        EntityManager em = emf.createEntityManager();
+        EntityTransaction transaction = em.getTransaction();
+        
+        try {
+            transaction.begin();
+            em.persist(newPost);
+            transaction.commit();
+        }catch(Exception e) {
+            e.printStackTrace();
+            transaction.rollback();
+        }
+     
+        return newPost;
     }
 
 }
