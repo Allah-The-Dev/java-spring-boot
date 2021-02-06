@@ -48,7 +48,8 @@ public class UserController {
     }
 
     @RequestMapping("users/registration")
-    public String registration() {
+    public String registration(Model model) {
+        model.addAttribute("User", new User());
         return "users/registration";
     }
     
