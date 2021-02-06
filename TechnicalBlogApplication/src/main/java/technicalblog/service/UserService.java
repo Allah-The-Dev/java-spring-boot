@@ -16,12 +16,13 @@ public class UserService {
         repository.registerUser(newUser);
     }
 
-    public boolean login(User user) {
-        if(user.getUsername().equals("validuser")) {
-            return true;
+    public User login(User user) {
+        User existingUser = repository.checkUser(user.getUsername(), user.getPassword());
+        if(existingUser != null) {
+            return existingUser;
         }
         else {
-            return false;
+            return null;
         }
     }
 

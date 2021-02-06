@@ -31,7 +31,8 @@ public class UserController {
 
     @RequestMapping(value = "users/login", method=RequestMethod.POST)
     public String loginUser(User user) {
-        if(userService.login(user)) {
+        User existingUser = userService.login(user);
+        if(existingUser != null) {
             return "redirect:/posts";
         }
         else {
