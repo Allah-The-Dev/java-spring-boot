@@ -1,5 +1,8 @@
 package technicalblog.model;
 
+import java.util.ArrayList;
+import java.util.List;
+
 import javax.persistence.*;
 
 @Entity
@@ -20,6 +23,9 @@ public class User {
     @OneToOne(cascade = CascadeType.ALL, fetch = FetchType.EAGER)
     @JoinColumn(name = "profile_id")
     private UserProfile profile;
+
+    @OneToMany(mappedBy = "user", cascade = CascadeType.REMOVE, fetch = FetchType.LAZY)
+    private List<Post> posts = new ArrayList<>();
 
     public Integer getId() {
         return id;
@@ -51,6 +57,14 @@ public class User {
 
 	public void setProfile(UserProfile profile) {
 		this.profile = profile;
+	}
+
+	public List<Post> getPosts() {
+		return posts;
+	}
+
+	public void setPosts(List<Post> posts) {
+		this.posts = posts;
 	}
 
 

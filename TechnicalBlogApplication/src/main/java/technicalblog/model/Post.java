@@ -21,6 +21,10 @@ public class Post {
     @Transient
     private Date date;
 
+    @ManyToOne(fetch = FetchType.EAGER)
+    @JoinColumn(name = "user_id")
+    private User user;
+
     public String getTitle() {
         return title;
     }
@@ -52,5 +56,13 @@ public class Post {
     public void setId(Integer id) {
         this.id = id;
     }
+
+	public User getUser() {
+		return user;
+	}
+
+	public void setUser(User user) {
+		this.user = user;
+	}
 
 }
