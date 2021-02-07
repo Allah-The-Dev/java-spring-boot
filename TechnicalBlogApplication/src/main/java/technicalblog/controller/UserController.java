@@ -2,6 +2,8 @@ package technicalblog.controller;
 
 import java.util.List;
 
+import javax.servlet.http.HttpSession;
+
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Controller;
 import org.springframework.ui.Model;
@@ -30,9 +32,10 @@ public class UserController {
     }
 
     @RequestMapping(value = "users/login", method=RequestMethod.POST)
-    public String loginUser(User user) {
+    public String loginUser(User user, HttpSession session) {
         User existingUser = userService.login(user);
         if(existingUser != null) {
+            session.setAttribute("loggeduser", existingUser);
             return "redirect:/posts";
         }
         else {
@@ -41,11 +44,12 @@ public class UserController {
     }   
 
     @RequestMapping(value = "users/logout", method=RequestMethod.POST)
-    public String logoutUser(Model model) {
+    public String logoutUser(Model model, HttpSession session) {
+        session.invalidate();
 
         List<Post> posts = postService.getAllPosts();
+     
         model.addAttribute("posts", posts);
-
         return "index";
     }
 
